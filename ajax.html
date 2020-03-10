@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>API 통신</title>
+  </head>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+  $( document ).ready(function() {
+    $('#send').click(function(){
+      $.ajax({
+        type : "POST",
+        contentType: 'application/json',
+        url  : "http://localhost:10100/restapi/v1/billClose?",
+        data : JSON.stringify({
+          "TB_SALPOSPAY" : 
+          [
+            {"a":1},
+            {"a":2},
+          ],
+          "TB_SALPOSSALES" : 
+          [
+            {"a":1},
+            {"a":2},
+          ]
+        }),
+        success : function(result){
+          console.log(result);
+        }
+      })
+    })
+  });
+  </script>
+  <body>
+   <button id="send">
+     AJAX 통신
+   </button>
+  </body>
+</html>
